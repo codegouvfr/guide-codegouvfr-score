@@ -1,11 +1,11 @@
 # Default locale for UI strings
 # Available UI languages: en, fr, de, sv
-locale: "en"
+locale: "fr"
 
 # Available themes: bulma, chota, dsfr
 # You can set the theme on the command line with
 # clj -X:set :theme bulma
-theme: "bulma"
+theme: "dsfr"
 
 # Customize UI strings
 ui-strings:
@@ -21,16 +21,16 @@ ui-strings:
 
 # Website header
 header:
- title:    "Here is my title."
- subtitle: "A subtitle here, possibly with _markdown_ formatting."
+ title:    "Guide Awesome CodeGouvFr"
+ subtitle: "Votre logiciel est-il *awesome* ? Faites le test."
 
 # Website footer
 footer:
- text:    "Some text here, possibly with **markdown** formatting."
- contact:  "bzg@gnu.org"
+ text:    "Site propulsé par [choices](https://git.sr.ht/~bzg/choices/), maintenu par la [mission logiciels libres](https://code.gouv.fr/fr/) de la DINUM."
+ contact:  "contact@code.gouv.fr"
 
 # Allow users to send you emails with the summary?
-mail-to: "bzg@gnu.org"
+mail-to: "contact@code.gouv.fr"
 
 # Display summary when done?
 display-summary: true
@@ -40,7 +40,7 @@ display-score: true
 
 # Display each score?
 # Mostly useful for debugging
-display-score-details: false
+display-score-details: true
 
 # Display the score with the highest value?
 # Only when :as-top-result-display is set for each score
@@ -97,72 +97,206 @@ conditional-score-output:
 # Mandatory configuration option
 tree:
   - node:       "0"
-    text:       "A title for the default page"
+    text:       "Le guide pour connaître le **awesome score** de votre logiciel."
     home-page:  true
     no-summary: true
-    help:       "Some introductory text here."
+    help:       "Le *awesome score* est basé sur [ces critères](https://github.com/codegouvfr/awesome-codegouvfr?tab=readme-ov-file#awesome-codegouvfr-score). C’est un score établi par la mission logiciels libres de la DINUM. Vous pouvez en savoir plus en [notre entrée de blog](https://code.gouv.fr/fr/blog/awesome-codegouvfr-logiciels-libres-remarquables-de-ladministration/)."
     choices:
-    - answer: "Start now"
+    - answer: "Commencer"
       goto:   "1"
       color:  "is-info"
 
   - node:       "1"
-    progress:   "[0 3]"
-    text:       "Is it the first question?"
-    help:       "Some **help text** here for the first question.  Markdown formatting accepted."
+    progress:   "[0 10]"
+    text:       "Y a-t-il une page web pour le projet, indépendante du dépôt ?"
     start-page: true
     choices:
-    - answer:  "Yes"
-      summary: "Yes, this is the first question."
-      explain: "Some explanation here."
+    - answer:  "Oui"
+      summary: "Il y a une page web pour le projet, indépendante du dépôt."
       score:
         score-1:
           value: 1
       goto:    "2"
       color:   "is-success"
-    - answer:  "No"
-      summary: "No, this is not the first question."
+    - answer:  "Non"
+      summary: "Il  n’y a pas une page web pour le projet, indépendante du dépôt."
       color:   "is-danger"
-      goto:    "end"
+      score:
+        score-1:
+          value: 0
+      goto:    "2"
 
   - node:     "2"
-    progress: "[1 3]"
-    text:     "Is it the second question?"
-    help:     "Some help text here for the second question."
+    progress: "[1 10]"
+    text:     "La dernière version date-t-elle de moins de six mois ?"
     choices:
-    - answer:  "Yes"
-      summary: "Yes, this is the second question!"
+    - answer:  "Oui"
+      summary: "La derinière version date de moins de six mois."
       score:
         score-1:
           value: 1
       goto:    "3"
       color:   "is-success"
-    - answer:  "Maybe"
-      summary: "This is the second question, maybe."
-      goto:    "3"
-      color:   "is-info"
-    - answer:  "No"
-      summary: "No, this is not the second question."
+    - answer:  "Non"
+      summary: "La dernière version ne date pas de moins de six mois."
+      score:
+        score-1:
+          value: 0
       color:   "is-danger"
-      goto:    "end"
+      goto:    "3"
 
   - node:     "3"
-    progress: "[2 3]"
-    text:     "Is it the _third_ question?"
+    progress: "[2 10]"
+    text:     "Le dernier commit (toutes branches confondues) date-t-il de moins de six mois ?"
     choices:
-      - answer:  "Yes"
-        summary: ["Yes, this is the third question...", "This will end soon, I promise."]
-        goto: "end"
-        color: "is-success"
-        score:
-          score-1:
-            value: 1
-      - answer:  "No"
-        summary: "No, this is not the third question."
-        color: "is-danger"
-        goto: "end"
+    - answer:  "Oui"
+      summary: "Oui, le dernier commit date de moins de six mois."
+      goto: "4"
+      color: "is-success"
+      score:
+        score-1:
+          value: 1
+    - answer:  "Non"
+      summary: "Non, le dernier commit ne date pas de moins de six mois."
+      score:
+        score-1:
+          value: 0
+      color: "is-danger"
+      goto: "4"
+
+  - node: "4"
+    progress: "[3 10]"
+    text: "Y a-t-il un logo ?"
+    choices:
+    - answer: "Oui"
+      summary: "Il y a un logo"
+      color: "is-success"
+      goto: "5"
+      score:
+        score-1:
+                value: 1
+    - answer: "Non"
+      summary: "Il n’y a pas de logo"
+      color: "is-danger"
+      goto: "5"
+      score:
+        score-1:
+                value: 0
+
+  - node: "5"
+    progress: "[4 10]"
+    text: "Y a-t-il un fichier `ROADMAP.md` dans le dépôt ?"
+    choices:
+    - answer: "Oui"
+      summary: "Il y a un fichier `ROADMAP.md`."
+      color: "is-success"
+      goto: "6"
+      score:
+        score-1:
+                value: 1
+    - answer: "Non"
+      summary: "Il n’y a pas de fichier `ROADMAP.md`."
+      color: "is-danger"
+      goto: "6"
+      score:
+         score-1:
+                 value: 0
+  - node: "6"
+    progress: "[5 10]"
+    text: "Y a-t-il un fichier `AUTHORS.md` dans le dépôt ?"
+    choices:
+    - answer: "Oui"
+      summary: "Il y a un fichier `AUTHORS.md`."
+      color: "is-success"
+      goto: "7"
+      score:
+        score-1:
+                value: 1
+    - answer: "Non"
+      summary: "Il n’y a pas de fichier `AUTHORS.md`."
+      color: "is-danger"
+      goto: "7"
+      score:
+        score-1:
+                value: 0
+
+  - node: "7"
+    progress: "[6 10]"
+    text: "Y a-t-il un fichier `CONTRIBUTING.md` dans le dépôt ?"
+    choices:
+    - answer: "Oui"
+      summary: "Il y a un fichier `CONTRIBUTING.md`."
+      color: "is-success"
+      goto: "8"
+      score:
+        score-1:
+                value: 1
+    - answer: "Non"
+      summary: "Il n’y a pas de fichier `CONTRIBUTING.md`."
+      color: "is-danger"
+      goto: "8"
+      score:
+        score-1:
+                value: 0
+
+  - node: "8"
+    progress: "[7 9]"
+    text: "Y a-t-il un fichier `CHANGELOG.md` dans le dépôt ?"
+    choices:
+    - answer: "Oui"
+      summary: "Il y a un fichier `CHANGLOG.md`."
+      color: "is-success"
+      goto: "9"
+      score:
+        score-1:
+                value: 1
+    - answer: "Non"
+      summary: "Il n’y a pas de fichier `CHANGELOG.md`."
+      color: "is-danger"
+      goto: "9"
+      score:
+        score-1:
+                value: 0
+
+  - node: "9"
+    progress: "[8 10]"
+    text: "Y a-t-il un fichier `CODE_OF_CONDUCT.md` dans le dépôt ?"
+    choices:
+    - answer: "Oui"
+      summary: "Il y a un fichier `CODE_OF_CONDUCT.md`."
+      color: "is-success"
+      goto: "10"
+      score:
+        score-1:
+                value: 1
+    - answer: "Non"
+      summary: "Il n’y a pas de fichier `CODE_OF_CONDUCT.md`."
+      color: "is-danger"
+      goto: "10"
+      score:
+        score-1:
+                value: 0
+
+  - node: "10"
+    progress: "[9 10]"
+    text: "Y a-t-il un fichier `GOVERNANCE.md` dans le dépôt ?"
+    choices:
+    - answer: "Oui"
+      summary: "Il y a un fichier `GOVERNANCE.md`."
+      color: "is-success"
+      goto: "end"
+      score:
+        score-1:
+                value: 1
+    - answer: "Non"
+      summary: "Il n’y a pas de fichier `GOVERNANCE.md`."
+      color: "is-danger"
+      goto: "end"
+      score:
+        score-1:
+                value: 0
 
   - node: "end"
-    progress: "[3 3]"
-    text: "This is the end."
+    progress: "[10 10]"
+    text: "Terminé !"
     done: true
