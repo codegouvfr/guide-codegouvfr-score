@@ -40,7 +40,7 @@ display-score: true
 
 # Display each score?
 # Mostly useful for debugging
-display-score-details: true
+display-score-details: false
 
 # Display the score with the highest value?
 # Only when :as-top-result-display is set for each score
@@ -58,15 +58,15 @@ score-variables:
   # "score-1" is a user-defined string
   score-1:
     # What to display when displaying score details:
-    display: "Score for 1"
+    #display: "Votre score est de "
     # Initial value for score-1:
     value: 0
     # When you when the score message to use percent:
     as-percent: true
     # Max is needed for displaying percent:
-    max: 3
+    max: 10
     # Only needed when display-score-top-result is true
-    as-top-result-display: "1 wins :)"
+    #as-top-result-display: "1 wins :)"
 
 # Set conditional output depending on scores.
 conditional-score-output:
@@ -78,19 +78,19 @@ conditional-score-output:
     color: "is-success" # Bulma-based class names for the UI
     # notification.  Available values for colors are: is-success,
     # is-info, is-warning, is-danger.
-    message: "Here is the score 1: %score-1%"
+    message: "Bravo, vous satisfaisez %score-1% des critères !"
     # In score-variables, when :max is set and :as-percent is true,
     # then the score will be shown as a percentage.
     condition-1:
-      score-1: 2 # This condition is met when score-1 is >= 2
+      score-1: 8 # This condition is met when score-1 is >= 2
   cas-2:
     color: "is-warning"
-    message: "Here is the score 1: %score-1%"
+    message: "%score-1%, pas mal !"
     condition-1:
-      score-1: 1 # This condition is met when score-1 is >= 1
+      score-1: 6 # This condition is met when score-1 is >= 1
   cas-3:
     color: "is-danger"
-    message: "Here is the score 1: %score-1%"
+    message: "À %score-1%, il y a encore un peu de travail."
     condition-1:
       score-1: 0 # This condition is met when score-1 is >= 0
 
@@ -174,14 +174,14 @@ tree:
       goto: "5"
       score:
         score-1:
-                value: 1
+          value: 1
     - answer: "Non"
       summary: "Il n’y a pas de logo"
       color: "is-danger"
       goto: "5"
       score:
         score-1:
-                value: 0
+          value: 0
 
   - node: "5"
     progress: "[4 10]"
@@ -200,7 +200,7 @@ tree:
       goto: "6"
       score:
          score-1:
-                 value: 0
+          value: 0
   - node: "6"
     progress: "[5 10]"
     text: "Y a-t-il un fichier `AUTHORS.md` dans le dépôt ?"
@@ -211,7 +211,7 @@ tree:
       goto: "7"
       score:
         score-1:
-                value: 1
+          value: 1
     - answer: "Non"
       summary: "Il n’y a pas de fichier `AUTHORS.md`."
       color: "is-danger"
@@ -230,14 +230,14 @@ tree:
       goto: "8"
       score:
         score-1:
-                value: 1
+          value: 1
     - answer: "Non"
       summary: "Il n’y a pas de fichier `CONTRIBUTING.md`."
       color: "is-danger"
       goto: "8"
       score:
         score-1:
-                value: 0
+          value: 0
 
   - node: "8"
     progress: "[7 9]"
@@ -249,14 +249,14 @@ tree:
       goto: "9"
       score:
         score-1:
-                value: 1
+          value: 1
     - answer: "Non"
       summary: "Il n’y a pas de fichier `CHANGELOG.md`."
       color: "is-danger"
       goto: "9"
       score:
         score-1:
-                value: 0
+          value: 0
 
   - node: "9"
     progress: "[8 10]"
@@ -268,14 +268,14 @@ tree:
       goto: "10"
       score:
         score-1:
-                value: 1
+          value: 1
     - answer: "Non"
       summary: "Il n’y a pas de fichier `CODE_OF_CONDUCT.md`."
       color: "is-danger"
       goto: "10"
       score:
         score-1:
-                value: 0
+          value: 0
 
   - node: "10"
     progress: "[9 10]"
@@ -287,14 +287,14 @@ tree:
       goto: "end"
       score:
         score-1:
-                value: 1
+          value: 1
     - answer: "Non"
       summary: "Il n’y a pas de fichier `GOVERNANCE.md`."
       color: "is-danger"
       goto: "end"
       score:
         score-1:
-                value: 0
+          value: 0
 
   - node: "end"
     progress: "[10 10]"
