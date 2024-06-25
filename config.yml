@@ -100,7 +100,7 @@ tree:
     text:       "Le guide pour connaître le **awesome score** de votre logiciel."
     home-page:  true
     no-summary: true
-    help:       "Le *awesome score* est basé sur [ces critères](https://github.com/codegouvfr/awesome-codegouvfr?tab=readme-ov-file#awesome-codegouvfr-score). C’est un score établi par la mission logiciels libres de la DINUM. Vous pouvez en savoir plus en [notre entrée de blog](https://code.gouv.fr/fr/blog/awesome-codegouvfr-logiciels-libres-remarquables-de-ladministration/)."
+    help:       "Le *awesome score* est basé sur [ces critères](https://github.com/codegouvfr/awesome-codegouvfr?tab=readme-ov-file#awesome-codegouvfr-score). C’est un score établi par la mission logiciels libres de la DINUM. Vous pouvez en savoir plus en lisant [notre entrée de blog](https://code.gouv.fr/fr/blog/awesome-codegouvfr-logiciels-libres-remarquables-de-ladministration/)."
     choices:
     - answer: "Commencer"
       goto:   "1"
