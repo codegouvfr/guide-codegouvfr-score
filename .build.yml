@@ -11,7 +11,7 @@ secrets:
 tasks:
   - build: |
       cd guide-awesome-codegouvfr/
-      clojure -M:js
+      clj -M:js
   - upload: |
       rsync -e "ssh -o StrictHostKeyChecking=no" -av guide-awesome-codegouvfr/resources/public/* web@code.gouv.fr:/home/web/websites/guide-awesome-codegouvfr/
 triggers:
