@@ -3,7 +3,7 @@ packages:
   - rsync
   - clojure
   - rlwrap
-  - java
+  - default-jre
 sources:
   - https://git.sr.ht/~codegouvfr/guide-awesome-codegouvfr
 secrets:
