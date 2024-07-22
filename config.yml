@@ -298,9 +298,5 @@ tree:
 
   - node: "end"
     progress: "[10 10]"
-<<<<<<< HEAD
-    text: "Terminé !"
-=======
     text: "C'est terminé !  N'oubliez pas de consulter notre [documentation](https://code.gouv.fr/documentation/#/publier)"
->>>>>>> 87b1f58 (config.yml: Updates)
     done: true
