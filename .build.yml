@@ -1,7 +1,6 @@
 image: debian/testing
 packages:
   - rsync
-  - clojure
   - rlwrap
   - default-jre
 sources:
@@ -9,9 +8,13 @@ sources:
 secrets:
   - bdd50953-add5-4ddb-9f34-9f0781900b7e
 tasks:
+  - install: |
+      curl -L -O https://github.com/clojure/brew-install/releases/latest/download/linux-install.sh
+      chmod +x linux-install.sh
+      ./linux-install.sh  --prefix /home/build
   - build: |
       cd guide-awesome-codegouvfr/
-      clj -M:js
+      /home/build/bin/clojure -M:js
   - upload: |
       rsync -e "ssh -o StrictHostKeyChecking=no" -av guide-awesome-codegouvfr/resources/public/* web@code.gouv.fr:/home/web/websites/guide-awesome-codegouvfr/
 triggers:
