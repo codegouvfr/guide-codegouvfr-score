@@ -1,7 +1,7 @@
 image: debian/testing
 packages:
-  - curl
   - rsync
+  - clojure
   - rlwrap
   - default-jre
 sources:
@@ -9,10 +9,6 @@ sources:
 secrets:
   - bdd50953-add5-4ddb-9f34-9f0781900b7e
 tasks:
-  - install: |
-      curl -L -O https://github.com/clojure/brew-install/releases/latest/download/linux-install.sh
-      chmod +x linux-install.sh
-      ./linux-install.sh
   - build: |
       cd guide-awesome-codegouvfr/
       clojure -M:js
