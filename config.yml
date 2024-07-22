@@ -99,7 +99,7 @@ tree:
   - node:       "0"
     text:       "Un guide pour connaître le score **Awesome CodeGouvFr** de votre logiciel."
     home-page:  true
-    no-summary: true
+    no-summary: false
     help:       "Le score *Awesome CodeGouvFr* s'appuie sur [ces critères](https://github.com/codegouvfr/awesome-codegouvfr?tab=readme-ov-file#awesome-codegouvfr-score) proposés par la mission logiciels libres de la DINUM. Vous pouvez en savoir plus en lisant [notre entrée de blog](https://code.gouv.fr/fr/blog/awesome-codegouvfr-logiciels-libres-remarquables-de-ladministration/) et notre [documentation](https://code.gouv.fr/documentation/#/publier)."
     choices:
     - answer: "Commencer"
@@ -112,8 +112,7 @@ tree:
     start-page: true
     choices:
     - answer:  "Oui"
-      summary: "Il y a une page web pour le projet, en plus du dépôt de code source."
-      explain: "Une page dédiée au projet aide à le faire connaître au-delà de la forge."
+      summary: "Il y a une page web pour le projet, en plus du dépôt de code source.  Une page dédiée au projet aide à le faire connaître au-delà de la forge."
       score:
         score-1:
           value: 1
@@ -139,8 +138,7 @@ tree:
       goto:    "3"
       color:   "is-success"
     - answer:  "Non"
-      summary: "La dernière version date de plus de six mois."
-      explain: "Si votre projet est toujours actif, dites-le dans votre `README.md`."
+      summary: "La dernière version date de plus de six mois. Si votre projet est toujours actif, dites-le dans votre `README.md`."
       score:
         score-1:
           value: 0
@@ -159,8 +157,7 @@ tree:
         score-1:
           value: 1
     - answer:  "Non"
-      summary: "Le dernier commit date d'il y a plus de six mois."
-      explain: "Si votre projet est toujours actif, dites-le dans votre `README.md`."
+      summary: "Le dernier commit date d'il y a plus de six mois. Si votre projet est toujours actif, dites-le dans votre `README.md`."
       score:
         score-1:
           value: 0
@@ -179,8 +176,7 @@ tree:
         score-1:
           value: 1
     - answer: "Non"
-      summary: "Le projet n'a pas de logo."
-      explain: "Un logo peut aider à identifier et faire connaître votre projet."
+      summary: "Le projet n'a pas de logo. Un logo peut aider à identifier et faire connaître votre projet."
       color: "is-danger"
       goto: "5"
       score:
@@ -199,8 +195,7 @@ tree:
         score-1:
                 value: 1
     - answer: "Non"
-      summary: "Il n’y a pas de fichier `ROADMAP.md` dans le dépôt."
-      explain: "Un fichier `ROADMAP.md` est un bon moyen d'anticiper les attentes et d'encourager les contributions."
+      summary: "Il n’y a pas de fichier `ROADMAP.md` dans le dépôt. Un fichier `ROADMAP.md` est un bon moyen d'anticiper les attentes et d'encourager les contributions."
       color: "is-danger"
       goto: "6"
       score:
@@ -218,8 +213,7 @@ tree:
         score-1:
           value: 1
     - answer: "Non"
-      summary: "Il n’y a pas de fichier `AUTHORS.md` dans le dépôt."
-      explain: "Un fichier `AUTHORS.md` permet de lister les auteurs principaux et leur rôle, passé ou présent."
+      summary: "Il n’y a pas de fichier `AUTHORS.md` dans le dépôt. Un fichier `AUTHORS.md` permet de lister les auteurs principaux et leur rôle, passé ou présent."
       color: "is-danger"
       goto: "7"
       score:
@@ -238,8 +232,7 @@ tree:
         score-1:
           value: 1
     - answer: "Non"
-      summary: "Il n’y a pas de fichier `CONTRIBUTING.md` dans le dépôt."
-      explain: "Le fichier `CONTRIBUTING.md` aide les contributeurs à aider utilement."
+      summary: "Il n’y a pas de fichier `CONTRIBUTING.md` dans le dépôt. Le fichier `CONTRIBUTING.md` aide les contributeurs à aider utilement."
       color: "is-danger"
       goto: "8"
       score:
@@ -258,8 +251,7 @@ tree:
         score-1:
           value: 1
     - answer: "Non"
-      summary: "Il n’y a pas de fichier `CHANGELOG.md` dans le dépôt."
-      explain: "Il est utile de proposer un fichier `CHANGELOG.md` en plus de l'historique des commits."
+      summary: "Il n’y a pas de fichier `CHANGELOG.md` dans le dépôt. Il est utile de proposer un fichier `CHANGELOG.md` en plus de l'historique des commits."
       color: "is-danger"
       goto: "9"
       score:
@@ -278,8 +270,7 @@ tree:
         score-1:
           value: 1
     - answer: "Non"
-      summary: "Il n’y a pas de fichier `CODE_OF_CONDUCT.md` dans le dépôt."
-      explain: "Le code de conduite est utile pour modérer les échanges en ligne et en présentiel, il indique à vos utilisateurs et contributeurs que vous souhaitez rendre votre projet le plus inclusif possible."
+      summary: "Il n’y a pas de fichier `CODE_OF_CONDUCT.md` dans le dépôt. Le code de conduite est utile pour modérer les échanges en ligne et en présentiel, il indique à vos utilisateurs et contributeurs que vous souhaitez rendre votre projet le plus inclusif possible."
       color: "is-danger"
       goto: "10"
       score:
@@ -298,8 +289,7 @@ tree:
         score-1:
           value: 1
     - answer: "Non"
-      summary: "Il n’y a pas de fichier `GOVERNANCE.md` dans le dépôt."
-      explain: "Un fichier `GOVERNANCE.md` détaille le « qui fait quoi » et aide vos contributeurs à comprendre les règles d'acceptation des contributions."
+      summary: "Il n’y a pas de fichier `GOVERNANCE.md` dans le dépôt. Un fichier `GOVERNANCE.md` détaille le « qui fait quoi » et aide vos contributeurs à comprendre les règles d'acceptation des contributions."
       color: "is-danger"
       goto: "end"
       score:
