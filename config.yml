@@ -90,14 +90,14 @@ conditional-score-output:
       score-1: 6 # This condition is met when score-1 is >= 1
   cas-3:
     color: "is-danger"
-    message: "À %score-1%, il y a encore un peu de travail."
+    message: "À %score-1%, il manque encore quelques éléments."
     condition-1:
       score-1: 0 # This condition is met when score-1 is >= 0
 
 # Mandatory configuration option
 tree:
   - node:       "0"
-    text:       "Le guide pour connaître le **awesome score** de votre logiciel."
+    text:       "Le guide pour connaître le **awesome score** de votre logiciel libre."
     home-page:  true
     no-summary: true
     help:       "Le *awesome score* est basé sur [ces critères](https://github.com/codegouvfr/awesome-codegouvfr?tab=readme-ov-file#awesome-codegouvfr-score). C’est un score établi par la mission logiciels libres de la DINUM. Vous pouvez en savoir plus en lisant [notre entrée de blog](https://code.gouv.fr/fr/blog/awesome-codegouvfr-logiciels-libres-remarquables-de-ladministration/)."
