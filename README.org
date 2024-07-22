@@ -1,60 +1,37 @@
-#+title: Choices: build SPA to let users explore a (decision-)tree
+[[https://git.sr.ht/~codegouvfr/guide-juridique-logiciel-libre/tree/master/item/LICENSES][https://img.shields.io/badge/Licence-EPL%2C%20Licence%20Ouverte-orange.svg?style=flat-square]]
 
-* =Choices=
+* Présentation 
 
-=Choices= lets you build a single page application to let users traverse
-a set of related options and get feedback from their choices.
+Ce dépôt contient le code pour une application web présentant le guide
+/awesome/ pour calculer le /awesome score/ des logiciels libres du
+secteur public.
 
-[[file:choices.png]]
+L'application est là : [[https://guide-awesome-score.code.gouv.fr][guide-awesome-score.code.gouv.fr]].
 
-* Build
+Ce dépôt de code source est dérivé de l'appliation
+https://git.sr.ht/~bzg/choices.
 
-1. Copy =config-example.yml= to =config.yml= and adapt it to your needs
-3. Test your configuration with =clj -M:test=
-4. Compile with =clj -M:js=
-5. Your static files are ready in =resources/public/=
+* Test
 
-* Develop
+1. Modifier =src/cljs/choices/config.cljs=
+2. Lancer =~$ lein fig:test= pour tester le format de =config/tree=
+3. Compilez avec =~$ lein fig:min=
+4. Vos fichiers statiques sont dans =resources/public/=
 
-1. Copy =config-example.yml= to =config.yml= and adapt it to your needs
-2. Compile with =clj -M:fig=
-3. Check your web browser on http://localhost:9500
+* Contribution
 
-* Themes
+Ce dépôt ne permet pas d'ouvrir des issues ou des /pull requests/.
 
-=Choices= come with three themes: [[https://bulma.io/][bulma]], the default, [[https://jenil.github.io/chota/][chota]] and [[https://www.systeme-de-design.gouv.fr/][dsfr]].
+Les contributions au code sont les bienvenues sous forme de questions
+ou de patches à envoyer à =~codegouvfr/dev@lists.sr.ht=.
 
-*Don't use the dsfr theme unless you are [[https://www.systeme-de-design.gouv.fr/utilisation-et-organisation/perimetre-d-application][authorized]] to.*
+Nous n'acceptons les contributions que si elles sont signées (/signed
+off/) du vrai nom du contributeur.  En signant ses contributions, le
+contributeur accepte le [[https://developercertificate.org][developer certificate of origin]].
 
-To set chota as the theme, run =clj -X:set :theme chota=.
+* Licence
 
-This will update =config.yml= and =resources/public/index.html= to use
-chota as the theme when generating the static website.
-   
-* Usage
+2024 DINUM, Bastien Guerry, Louis Vigneras.
 
-Here are some examples where =Choices= is used:
-
-- https://guide-juridique-logiciel-libre.etalab.gouv.fr/
-- https://guide-juridique-open-data.etalab.gouv.fr/
-- https://publiccodenet.github.io/assessment-eligibility/
-
-* Contribute
-
-Contributions are welcome.  You can send feedback and patches to
-[[mailto:~bzg/dev@lists.sr.ht][~bzg/dev@lists.sr.ht]].  For patches, please configure your local copy
-of the repository to add a prefix to the subject line of your emails:
-
-: ~$ git config format.subjectPrefix 'PATCH choices'
-
-* Support the Clojure(script) ecosystem
-
-If you like Clojure(script), please consider supporting maintainers by
-donating to [[https://www.clojuriststogether.org][clojuriststogether.org]].
-
-* License
-
-2019-2024 Bastien Guerry
-
-This application is published under the [[file:LICENSE][EPL 2.0 license]], except for
-the fonts in =resources/public/fonts=.
+Le code de ce dépôt est publié sous [[file:LICENSES/LICENSE.EPL-2.0.md][licence EPL 2.0]] et les données du
+dépôt sous [[file:LICENSES/LICENSE.Etalab-2.0.txt][licence Ouverte 2.0]].

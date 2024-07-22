@@ -1,4 +1,22 @@
 resources/public/js/*
 todo.org
 target/*
+<<<<<<< HEAD
 .cpcache/*
+=======
+figwheel_server.log
+pom.xml
+*jar
+/lib/
+/classes/
+/out/
+/target/
+.lein-deps-sum
+.lein-repl-history
+.lein-plugins/
+.repl
+.nrepl-port
+.rebel_readline_history
+.lein-failures
+.dir-locals.el
+>>>>>>> cd00527 (README.md: Update README and add licences)
