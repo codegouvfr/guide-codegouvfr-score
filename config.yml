@@ -26,7 +26,7 @@ header:
 
 # Website footer
 footer:
- text:    "Site propulsé par [choices](https://git.sr.ht/~bzg/choices/) et maintenu par la [mission logiciels libres](https://code.gouv.fr) de la DINUM."
+ text:    "Site propulsé par [choices](https://git.sr.ht/~codegouvfr/guide-awesome-codegouvfr/) et maintenu par la [mission logiciels libres](https://code.gouv.fr) de la DINUM."
  contact:  "contact@code.gouv.fr"
 
 # Allow users to send you emails with the summary?
