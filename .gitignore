@@ -1,3 +1,4 @@
 resources/public/js/*
 todo.org
 target/*
+.cpcache/*
