@@ -22,11 +22,11 @@ ui-strings:
 # Website header
 header:
  title:    "Guide Awesome CodeGouvFr"
- subtitle: "Votre logiciel est-il *awesome* ? Faites le test."
+ subtitle: "Le logiciel libre publié par votre administration est-il *awesome* ? Faites le test."
 
 # Website footer
 footer:
- text:    "Site propulsé par [choices](https://git.sr.ht/~bzg/choices/), maintenu par la [mission logiciels libres](https://code.gouv.fr/fr/) de la DINUM."
+ text:    "Site propulsé par [choices](https://git.sr.ht/~bzg/choices/) et maintenu par la [mission logiciels libres](https://code.gouv.fr) de la DINUM."
  contact:  "contact@code.gouv.fr"
 
 # Allow users to send you emails with the summary?
@@ -58,7 +58,7 @@ score-variables:
   # "score-1" is a user-defined string
   score-1:
     # What to display when displaying score details:
-    #display: "Votre score est de "
+    #display: "Votre score Awesome CodeGouvFr est de "
     # Initial value for score-1:
     value: 0
     # When you when the score message to use percent:
@@ -78,29 +78,29 @@ conditional-score-output:
     color: "is-success" # Bulma-based class names for the UI
     # notification.  Available values for colors are: is-success,
     # is-info, is-warning, is-danger.
-    message: "Bravo, vous satisfaisez %score-1% des critères !"
+    message: "Bravo, vous satisfaites %score-1% des critères !"
     # In score-variables, when :max is set and :as-percent is true,
     # then the score will be shown as a percentage.
     condition-1:
       score-1: 8 # This condition is met when score-1 is >= 2
   cas-2:
     color: "is-warning"
-    message: "%score-1%, pas mal !"
+    message: "%score-1%, pas mal ! Rendez-vous sur notre [documentation](https://code.gouv.fr/documentation/#/publier) pour progresser."
     condition-1:
       score-1: 6 # This condition is met when score-1 is >= 1
   cas-3:
     color: "is-danger"
-    message: "À %score-1%, il manque encore quelques éléments."
+    message: "À %score-1%, il y a encore un peu de travail.  Rendez-vous sur la [doc](https://code.gouv.fr/documentation/#/publier) pour progresser."
     condition-1:
       score-1: 0 # This condition is met when score-1 is >= 0
 
 # Mandatory configuration option
 tree:
   - node:       "0"
-    text:       "Le guide pour connaître le **awesome score** de votre logiciel libre."
+    text:       "Un guide pour connaître le score **Awesome CodeGouvFr** de votre logiciel."
     home-page:  true
     no-summary: true
-    help:       "Le *awesome score* est basé sur [ces critères](https://github.com/codegouvfr/awesome-codegouvfr?tab=readme-ov-file#awesome-codegouvfr-score). C’est un score établi par la mission logiciels libres de la DINUM. Vous pouvez en savoir plus en lisant [notre entrée de blog](https://code.gouv.fr/fr/blog/awesome-codegouvfr-logiciels-libres-remarquables-de-ladministration/)."
+    help:       "Le score *Awesome CodeGouvFr* s'appuie sur [ces critères](https://github.com/codegouvfr/awesome-codegouvfr?tab=readme-ov-file#awesome-codegouvfr-score) proposés par la mission logiciels libres de la DINUM. Vous pouvez en savoir plus en lisant [notre entrée de blog](https://code.gouv.fr/fr/blog/awesome-codegouvfr-logiciels-libres-remarquables-de-ladministration/) et notre [documentation](https://code.gouv.fr/documentation/#/publier)."
     choices:
     - answer: "Commencer"
       goto:   "1"
@@ -108,18 +108,18 @@ tree:
 
   - node:       "1"
     progress:   "[0 10]"
-    text:       "Y a-t-il une page web pour le projet, indépendante du dépôt ?"
+    text:       "Y a-t-il une page web présentant le projet, en plus du dépôt de code source ?"
     start-page: true
     choices:
     - answer:  "Oui"
-      summary: "Il y a une page web pour le projet, indépendante du dépôt."
+      summary: "Il y a une page web pour le projet, en plus du dépôt de code source."
       score:
         score-1:
           value: 1
       goto:    "2"
       color:   "is-success"
     - answer:  "Non"
-      summary: "Il  n’y a pas une page web pour le projet, indépendante du dépôt."
+      summary: "Il n’y a pas une page web pour le projet indépendante du dépôt de code source."
       color:   "is-danger"
       score:
         score-1:
@@ -128,7 +128,7 @@ tree:
 
   - node:     "2"
     progress: "[1 10]"
-    text:     "La dernière version date-t-elle de moins de six mois ?"
+    text:     "La dernière version date-t-elle de moins de six mois ?"
     choices:
     - answer:  "Oui"
       summary: "La derinière version date de moins de six mois."
@@ -138,7 +138,7 @@ tree:
       goto:    "3"
       color:   "is-success"
     - answer:  "Non"
-      summary: "La dernière version ne date pas de moins de six mois."
+      summary: "La dernière version date de plus de six mois."
       score:
         score-1:
           value: 0
@@ -147,7 +147,7 @@ tree:
 
   - node:     "3"
     progress: "[2 10]"
-    text:     "Le dernier commit (toutes branches confondues) date-t-il de moins de six mois ?"
+    text:     "Le dernier commit (toutes branches confondues) date-t-il de moins de six mois ?"
     choices:
     - answer:  "Oui"
       summary: "Oui, le dernier commit date de moins de six mois."
@@ -157,7 +157,7 @@ tree:
         score-1:
           value: 1
     - answer:  "Non"
-      summary: "Non, le dernier commit ne date pas de moins de six mois."
+      summary: "Le dernier commit date d'il y a plus de six mois."
       score:
         score-1:
           value: 0
@@ -166,17 +166,17 @@ tree:
 
   - node: "4"
     progress: "[3 10]"
-    text: "Y a-t-il un logo ?"
+    text: "Le projet a-t-il un logo ?"
     choices:
     - answer: "Oui"
-      summary: "Il y a un logo"
+      summary: "Le projet a un logo."
       color: "is-success"
       goto: "5"
       score:
         score-1:
           value: 1
     - answer: "Non"
-      summary: "Il n’y a pas de logo"
+      summary: "Le projet n'a pas de logo."
       color: "is-danger"
       goto: "5"
       score:
@@ -185,17 +185,17 @@ tree:
 
   - node: "5"
     progress: "[4 10]"
-    text: "Y a-t-il un fichier `ROADMAP.md` dans le dépôt ?"
+    text: "Y a-t-il un fichier `ROADMAP.md` dans le dépôt pour décrire la feuille de route  ?"
     choices:
     - answer: "Oui"
-      summary: "Il y a un fichier `ROADMAP.md`."
+      summary: "Il y a un fichier `ROADMAP.md` dans le dépôt pour décrire la feuille de route."
       color: "is-success"
       goto: "6"
       score:
         score-1:
                 value: 1
     - answer: "Non"
-      summary: "Il n’y a pas de fichier `ROADMAP.md`."
+      summary: "Il n’y a pas de fichier `ROADMAP.md` dans le dépôt."
       color: "is-danger"
       goto: "6"
       score:
@@ -203,17 +203,17 @@ tree:
           value: 0
   - node: "6"
     progress: "[5 10]"
-    text: "Y a-t-il un fichier `AUTHORS.md` dans le dépôt ?"
+    text: "Y a-t-il un fichier `AUTHORS.md` dans le dépôt avec la liste des auteurs ?"
     choices:
     - answer: "Oui"
-      summary: "Il y a un fichier `AUTHORS.md`."
+      summary: "Il y a un fichier `AUTHORS.md` dans le dépôt.."
       color: "is-success"
       goto: "7"
       score:
         score-1:
           value: 1
     - answer: "Non"
-      summary: "Il n’y a pas de fichier `AUTHORS.md`."
+      summary: "Il n’y a pas de fichier `AUTHORS.md` dans le dépôt.."
       color: "is-danger"
       goto: "7"
       score:
@@ -222,17 +222,17 @@ tree:
 
   - node: "7"
     progress: "[6 10]"
-    text: "Y a-t-il un fichier `CONTRIBUTING.md` dans le dépôt ?"
+    text: "Y a-t-il un fichier `CONTRIBUTING.md` dans le dépôt expliquant comment contribuer ?"
     choices:
     - answer: "Oui"
-      summary: "Il y a un fichier `CONTRIBUTING.md`."
+      summary: "Il y a un fichier `CONTRIBUTING.md` dans le dépôt.."
       color: "is-success"
       goto: "8"
       score:
         score-1:
           value: 1
     - answer: "Non"
-      summary: "Il n’y a pas de fichier `CONTRIBUTING.md`."
+      summary: "Il n’y a pas de fichier `CONTRIBUTING.md` dans le dépôt.."
       color: "is-danger"
       goto: "8"
       score:
@@ -241,17 +241,17 @@ tree:
 
   - node: "8"
     progress: "[7 9]"
-    text: "Y a-t-il un fichier `CHANGELOG.md` dans le dépôt ?"
+    text: "Y a-t-il un fichier `CHANGELOG.md` dans le dépôt avec la liste des changements principaux ?"
     choices:
     - answer: "Oui"
-      summary: "Il y a un fichier `CHANGLOG.md`."
+      summary: "Il y a un fichier `CHANGLOG.md` dans le dépôt.."
       color: "is-success"
       goto: "9"
       score:
         score-1:
           value: 1
     - answer: "Non"
-      summary: "Il n’y a pas de fichier `CHANGELOG.md`."
+      summary: "Il n’y a pas de fichier `CHANGELOG.md` dans le dépôt.."
       color: "is-danger"
       goto: "9"
       score:
@@ -260,17 +260,17 @@ tree:
 
   - node: "9"
     progress: "[8 10]"
-    text: "Y a-t-il un fichier `CODE_OF_CONDUCT.md` dans le dépôt ?"
+    text: "Y a-t-il un fichier `CODE_OF_CONDUCT.md` dans le dépôt et un code de conduite pour le projet ?"
     choices:
     - answer: "Oui"
-      summary: "Il y a un fichier `CODE_OF_CONDUCT.md`."
+      summary: "Il y a un fichier `CODE_OF_CONDUCT.md` dans le dépôt.."
       color: "is-success"
       goto: "10"
       score:
         score-1:
           value: 1
     - answer: "Non"
-      summary: "Il n’y a pas de fichier `CODE_OF_CONDUCT.md`."
+      summary: "Il n’y a pas de fichier `CODE_OF_CONDUCT.md` dans le dépôt.."
       color: "is-danger"
       goto: "10"
       score:
@@ -279,17 +279,17 @@ tree:
 
   - node: "10"
     progress: "[9 10]"
-    text: "Y a-t-il un fichier `GOVERNANCE.md` dans le dépôt ?"
+    text: "Y a-t-il un fichier `GOVERNANCE.md` dans le dépôt présentant la gouvernance du projet ?"
     choices:
     - answer: "Oui"
-      summary: "Il y a un fichier `GOVERNANCE.md`."
+      summary: "Il y a un fichier `GOVERNANCE.md` dans le dépôt.."
       color: "is-success"
       goto: "end"
       score:
         score-1:
           value: 1
     - answer: "Non"
-      summary: "Il n’y a pas de fichier `GOVERNANCE.md`."
+      summary: "Il n’y a pas de fichier `GOVERNANCE.md` dans le dépôt.."
       color: "is-danger"
       goto: "end"
       score:
@@ -298,5 +298,9 @@ tree:
 
   - node: "end"
     progress: "[10 10]"
+<<<<<<< HEAD
     text: "Terminé !"
+=======
+    text: "C'est terminé !  N'oubliez pas de consulter notre [documentation](https://code.gouv.fr/documentation/#/publier)"
+>>>>>>> 87b1f58 (config.yml: Updates)
     done: true
