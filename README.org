@@ -8,7 +8,7 @@ secteur public.
 
 L'application est là : [[https://guide-awesome-score.code.gouv.fr][guide-awesome-score.code.gouv.fr]].
 
-Ce dépôt de code source est dérivé de l'appliation
+Ce dépôt de code source est dérivé de l'application
 https://git.sr.ht/~bzg/choices.
 
 * Test
