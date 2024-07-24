@@ -169,7 +169,7 @@ tree:
 
   - node:       "c"
     text:       "Le logiciel est-il actuellement financé ?"
-    help: 	"Les logiciels libres de la liste Awesome CodeGouvFr doivent tous actuellement recevoir des fonds publics d'une ou plusieurs administrations."
+    help:       "Les logiciels libres de la liste Awesome CodeGouvFr doivent tous actuellement recevoir des fonds publics d'une ou plusieurs administrations."
     progress: "[2 14]"
     choices:
     - answer:  "Oui"
