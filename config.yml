@@ -22,7 +22,7 @@ ui-strings:
 # Website header
 header:
  title:    "Guide Awesome CodeGouvFr"
- subtitle: "Le logiciel libre publié par votre administration est-il *awesome* ? Faites le test."
+ subtitle: "Le logiciel libre publié par votre administration est-il *remarquable* ? Faites le test."
 
 # Website footer
 footer:
@@ -56,6 +56,17 @@ display-unconditionally: false
 # Set initial variables to register scores.
 score-variables:
   # "score-1" is a user-defined string
+  score-0:
+    # What to display when displaying score details:
+    #display: "Votre score Awesome CodeGouvFr est de "
+    # Initial value for score-1:
+    value: 0
+    # When you when the score message to use percent:
+    as-percent: false
+    # Max is needed for displaying percent:
+    max: 4
+    # Only needed when display-score-top-result is true
+    #as-top-result-display: "1 wins :)"
   score-1:
     # What to display when displaying score details:
     #display: "Votre score Awesome CodeGouvFr est de "
@@ -82,37 +93,132 @@ conditional-score-output:
     # In score-variables, when :max is set and :as-percent is true,
     # then the score will be shown as a percentage.
     condition-1:
+      score-0: 4
       score-1: 8 # This condition is met when score-1 is >= 2
   cas-2:
     color: "is-warning"
     message: "%score-1%, pas mal ! Rendez-vous sur notre [documentation](https://code.gouv.fr/documentation/#/publier) pour progresser."
     condition-1:
+      score-0: 4
       score-1: 6 # This condition is met when score-1 is >= 1
   cas-3:
     color: "is-danger"
     message: "À %score-1%, il y a encore un peu de travail.  Rendez-vous sur la [doc](https://code.gouv.fr/documentation/#/publier) pour progresser."
     condition-1:
+      score-0: 4
       score-1: 0 # This condition is met when score-1 is >= 0
+  cas-4:
+    color: "is-danger"
+    message: "Vous ne remplissez que %score-0 des quatre conditions prérequises."
+    condition-1:
+      score-0: 0
+      score-1: 0
 
 # Mandatory configuration option
 tree:
   - node:       "0"
-    text:       "Un guide pour connaître le score **Awesome CodeGouvFr** de votre logiciel."
+    text:       "Un test pour connaître le score **Awesome CodeGouvFr** de votre logiciel."
     home-page:  true
     no-summary: false
-    help:       "Le score *Awesome CodeGouvFr* s'appuie sur [ces critères](https://github.com/codegouvfr/awesome-codegouvfr?tab=readme-ov-file#awesome-codegouvfr-score) proposés par la mission logiciels libres de la DINUM. Vous pouvez en savoir plus en lisant [notre entrée de blog](https://code.gouv.fr/fr/blog/awesome-codegouvfr-logiciels-libres-remarquables-de-ladministration/) et notre [documentation](https://code.gouv.fr/documentation/#/publier)."
+    help:       "La mission logiciels libres promeut les logiciels libres remarquables publiés par des administrations.  Des logiciels qui sont sous licence libre, activement maintenus, financés et utilisés.  En plus de ces quatre critères requis pour entrer dans la liste, nous leur attribuons un score s'ils respectent 10 autres [critères optionnels](https://github.com/codegouvfr/awesome-codegouvfr?tab=readme-ov-file#awesome-codegouvfr-score). Vous pouvez en savoir plus en lisant [notre entrée de blog](https://code.gouv.fr/fr/blog/awesome-codegouvfr-logiciels-libres-remarquables-de-ladministration/) et notre [documentation](https://code.gouv.fr/documentation/#/publier)."
     choices:
     - answer: "Commencer"
-      goto:   "1"
+      goto:   "a"
       color:  "is-info"
 
-  - node:       "1"
-    progress:   "[0 10]"
-    text:       "Y a-t-il une page web présentant le projet, en plus du dépôt de code source ?"
+  - node:       "a"
+    text:       "Le logiciel est-il publié sous licence libre ?"
+    help:       "Un logiciel libre est un logiciel que chacun peut librement étudier, utiliser, modifier et dont il peut distribuer des versions modifiées.  Voir notre [guide juridique sur l'ouverture](https://code.gouv.fr/guides/juridique/) si besoin."
     start-page: true
+    progress: "[0 14]"
     choices:
     - answer:  "Oui"
-      summary: "Il y a une page web pour le projet, en plus du dépôt de code source.  Une page dédiée au projet aide à le faire connaître au-delà de la forge."
+      summary: "Le logiciel est publié sous licence libre."
+      score:
+        score-0:
+          value: 1
+      goto:    "b"
+      color:   "is-success"
+    - answer:  "Non"
+      summary: "Le logiciel n'est pas publié sous licence libre."
+      color:   "is-danger"
+      score:
+        score-0:
+          value: 0
+      goto:    "not-awesome"
+
+  - node:       "b"
+    text:       "Le logiciel est-il activement maintenu ?"
+    help:       "Un logiciel est activement maintenu si une équipe corrige ses bugs voire continue de le faire évoluer.  Voir notre documentation sur les [degrés d'ouverture](https://code.gouv.fr/documentation/#/publier?id=quels-degr%c3%a9s-d39ouverture-pour-les-codes-sources-) d'un logiciel."
+    progress:   "[1 14]"
+    choices:
+    - answer:  "Oui"
+      summary: "Le logiciel est activement maintenu."
+      score:
+        score-0:
+          value: 1
+      goto:    "c"
+      color:   "is-success"
+    - answer:  "Non"
+      summary: "Le logiciel n'est pas activement maintenu."
+      color:   "is-danger"
+      score:
+        score-0:
+          value: 0
+      goto:    "not-awesome"
+
+  - node:       "c"
+    text:       "Le logiciel est-il actuellement financé ?"
+    help: 	"Les logiciels libres de la liste Awesome CodeGouvFr doivent tous actuellement recevoir des fonds publics d'une ou plusieurs administrations."
+    progress: "[2 14]"
+    choices:
+    - answer:  "Oui"
+      summary: "Le logiciel est actuellement financé."
+      score:
+        score-0:
+          value: 1
+      goto:    "d"
+      color:   "is-success"
+    - answer:  "Non"
+      summary: "Le logiciel n'est pas actuellement financé."
+      color:   "is-danger"
+      score:
+        score-0:
+          value: 0
+      goto:    "not-awesome"
+
+  - node:       "d"
+    text:       "Le logiciel est-il utilisé par plusieurs administrations ?"
+    help:       "Dans une logique de mutualisation, plusieurs administrations font confiance à celles des administrations qui portent les logiciels libres de la liste Awesome CodeGouvFr."
+    progress: "[3 14]"
+    choices:
+    - answer:  "Oui"
+      summary: "Le logiciel est utilisé par plusieurs administrations."
+      score:
+        score-0:
+          value: 1
+      goto:    "1"
+      color:   "is-success"
+    - answer:  "Non"
+      summary: "Le logiciel n'est pas utilisé par au moins une administration."
+      color:   "is-danger"
+      score:
+        score-0:
+          value: 0
+      goto:    "not-awesome"
+
+  - node:       "not-awesome"
+    text:       "Désolé, votre logiciel ne peut pas entrer dans la liste Awesome CodeGouvFr."
+    done: true
+
+  - node:       "1"
+    progress:   "[0 14]"
+    text:       "Y a-t-il une page web présentant le projet, en plus du dépôt de code source ?"
+    help:       "Une page dédiée au projet aide à le faire connaître au-delà de la forge."
+    progress: "[4 14]"
+    choices:
+    - answer:  "Oui"
+      summary: "Il y a une page web pour le projet, en plus du dépôt de code source."
       score:
         score-1:
           value: 1
@@ -127,8 +233,9 @@ tree:
       goto:    "2"
 
   - node:     "2"
-    progress: "[1 10]"
+    progress: "[5 14]"
     text:     "La dernière version date-t-elle de moins de six mois ?"
+    help:     "Si votre projet est toujours actif, dites-le dans votre `README.md`."
     choices:
     - answer:  "Oui"
       summary: "La dernière version date de moins de six mois."
@@ -138,7 +245,7 @@ tree:
       goto:    "3"
       color:   "is-success"
     - answer:  "Non"
-      summary: "La dernière version date de plus de six mois. Si votre projet est toujours actif, dites-le dans votre `README.md`."
+      summary: "La dernière version date de plus de six mois."
       score:
         score-1:
           value: 0
@@ -146,8 +253,9 @@ tree:
       goto:    "3"
 
   - node:     "3"
-    progress: "[2 10]"
+    progress: "[6 14]"
     text:     "Le dernier commit (toutes branches confondues) date-t-il de moins de six mois ?"
+    help:     "Si votre projet est toujours actif, dites-le dans votre `README.md`."
     choices:
     - answer:  "Oui"
       summary: "Oui, le dernier commit date de moins de six mois."
@@ -157,7 +265,7 @@ tree:
         score-1:
           value: 1
     - answer:  "Non"
-      summary: "Le dernier commit date d'il y a plus de six mois. Si votre projet est toujours actif, dites-le dans votre `README.md`."
+      summary: "Le dernier commit date d'il y a plus de six mois."
       score:
         score-1:
           value: 0
@@ -165,8 +273,9 @@ tree:
       goto: "4"
 
   - node: "4"
-    progress: "[3 10]"
+    progress: "[7 14]"
     text: "Le projet a-t-il un logo ?"
+    help: "Un logo aide à identifier et faire connaître votre projet."
     choices:
     - answer: "Oui"
       summary: "Le projet a un logo."
@@ -176,7 +285,7 @@ tree:
         score-1:
           value: 1
     - answer: "Non"
-      summary: "Le projet n'a pas de logo. Un logo peut aider à identifier et faire connaître votre projet."
+      summary: "Le projet n'a pas de logo."
       color: "is-danger"
       goto: "5"
       score:
@@ -184,8 +293,9 @@ tree:
           value: 0
 
   - node: "5"
-    progress: "[4 10]"
+    progress: "[8 14]"
     text: "Y a-t-il un fichier `ROADMAP.md` dans le dépôt pour décrire la feuille de route  ?"
+    help: "Un fichier `ROADMAP.md` est un bon moyen d'anticiper les attentes et d'encourager les contributions."
     choices:
     - answer: "Oui"
       summary: "Il y a un fichier `ROADMAP.md` dans le dépôt pour décrire la feuille de route."
@@ -195,15 +305,16 @@ tree:
         score-1:
                 value: 1
     - answer: "Non"
-      summary: "Il n’y a pas de fichier `ROADMAP.md` dans le dépôt. Un fichier `ROADMAP.md` est un bon moyen d'anticiper les attentes et d'encourager les contributions."
+      summary: "Il n’y a pas de fichier `ROADMAP.md` dans le dépôt."
       color: "is-danger"
       goto: "6"
       score:
          score-1:
           value: 0
   - node: "6"
-    progress: "[5 10]"
+    progress: "[9 14]"
     text: "Y a-t-il un fichier `AUTHORS.md` dans le dépôt avec la liste des auteurs ?"
+    help: "Un fichier `AUTHORS.md` permet de lister les auteurs principaux et leur rôle, passé ou présent."
     choices:
     - answer: "Oui"
       summary: "Il y a un fichier `AUTHORS.md` dans le dépôt."
@@ -213,7 +324,7 @@ tree:
         score-1:
           value: 1
     - answer: "Non"
-      summary: "Il n’y a pas de fichier `AUTHORS.md` dans le dépôt. Un fichier `AUTHORS.md` permet de lister les auteurs principaux et leur rôle, passé ou présent."
+      summary: "Il n’y a pas de fichier `AUTHORS.md` dans le dépôt."
       color: "is-danger"
       goto: "7"
       score:
@@ -221,8 +332,9 @@ tree:
                 value: 0
 
   - node: "7"
-    progress: "[6 10]"
+    progress: "[10 14]"
     text: "Y a-t-il un fichier `CONTRIBUTING.md` dans le dépôt expliquant comment contribuer ?"
+    help: "Le fichier `CONTRIBUTING.md` aide les contributeurs à aider utilement."
     choices:
     - answer: "Oui"
       summary: "Il y a un fichier `CONTRIBUTING.md` dans le dépôt."
@@ -232,7 +344,7 @@ tree:
         score-1:
           value: 1
     - answer: "Non"
-      summary: "Il n’y a pas de fichier `CONTRIBUTING.md` dans le dépôt. Le fichier `CONTRIBUTING.md` aide les contributeurs à aider utilement."
+      summary: "Il n’y a pas de fichier `CONTRIBUTING.md` dans le dépôt."
       color: "is-danger"
       goto: "8"
       score:
@@ -240,8 +352,9 @@ tree:
           value: 0
 
   - node: "8"
-    progress: "[7 9]"
+    progress: "[11 14]"
     text: "Y a-t-il un fichier `CHANGELOG.md` dans le dépôt avec la liste des changements principaux ?"
+    help: "Il est utile de proposer un fichier `CHANGELOG.md` en plus de l'historique des commits."
     choices:
     - answer: "Oui"
       summary: "Il y a un fichier `CHANGELOG.md` dans le dépôt."
@@ -251,7 +364,7 @@ tree:
         score-1:
           value: 1
     - answer: "Non"
-      summary: "Il n’y a pas de fichier `CHANGELOG.md` dans le dépôt. Il est utile de proposer un fichier `CHANGELOG.md` en plus de l'historique des commits."
+      summary: "Il n’y a pas de fichier `CHANGELOG.md` dans le dépôt."
       color: "is-danger"
       goto: "9"
       score:
@@ -259,8 +372,9 @@ tree:
           value: 0
 
   - node: "9"
-    progress: "[8 10]"
+    progress: "[12 14]"
     text: "Y a-t-il un fichier `CODE_OF_CONDUCT.md` dans le dépôt et un code de conduite pour le projet ?"
+    help: "Le code de conduite est utile pour modérer les échanges en ligne et en présentiel, il indique à vos utilisateurs et contributeurs que vous souhaitez rendre votre projet le plus inclusif possible."
     choices:
     - answer: "Oui"
       summary: "Il y a un fichier `CODE_OF_CONDUCT.md` dans le dépôt."
@@ -270,7 +384,7 @@ tree:
         score-1:
           value: 1
     - answer: "Non"
-      summary: "Il n’y a pas de fichier `CODE_OF_CONDUCT.md` dans le dépôt. Le code de conduite est utile pour modérer les échanges en ligne et en présentiel, il indique à vos utilisateurs et contributeurs que vous souhaitez rendre votre projet le plus inclusif possible."
+      summary: "Il n’y a pas de fichier `CODE_OF_CONDUCT.md` dans le dépôt."
       color: "is-danger"
       goto: "10"
       score:
@@ -278,8 +392,9 @@ tree:
           value: 0
 
   - node: "10"
-    progress: "[9 10]"
+    progress: "[13 14]"
     text: "Y a-t-il un fichier `GOVERNANCE.md` dans le dépôt présentant la gouvernance du projet ?"
+    help: "Un fichier `GOVERNANCE.md` détaille le « qui fait quoi » et aide vos contributeurs à comprendre les règles d'acceptation des contributions."
     choices:
     - answer: "Oui"
       summary: "Il y a un fichier `GOVERNANCE.md` dans le dépôt."
@@ -289,7 +404,7 @@ tree:
         score-1:
           value: 1
     - answer: "Non"
-      summary: "Il n’y a pas de fichier `GOVERNANCE.md` dans le dépôt. Un fichier `GOVERNANCE.md` détaille le « qui fait quoi » et aide vos contributeurs à comprendre les règles d'acceptation des contributions."
+      summary: "Il n’y a pas de fichier `GOVERNANCE.md` dans le dépôt."
       color: "is-danger"
       goto: "end"
       score:
@@ -297,6 +412,6 @@ tree:
           value: 0
 
   - node: "end"
-    progress: "[10 10]"
-    text: "C'est terminé !  N'oubliez pas de consulter notre [documentation](https://code.gouv.fr/documentation/#/publier)"
+    progress: "[14 14]"
+    text: "C'est terminé !  N'oubliez pas de consulter notre [documentation](https://code.gouv.fr/documentation/#/publier)."
     done: true
