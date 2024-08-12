@@ -1,4 +1,4 @@
-{:version     "0.11"
+{:version     "0.12"
  :description "Web application to traverse a decision-tree and expose the result"
  :url         "https://git.sr.ht/~bzg/choices"
  :license     {:name "Eclipse Public License - v 2.0"
@@ -6,13 +6,12 @@
 
  :deps
  {
-  cljsjs/clipboard                      {:mvn/version "2.0.4-0"}
   com.bhauman/figwheel-main             {:mvn/version "0.2.18"}
   com.taoensso/tempura                  {:mvn/version "1.5.4"}
   io.forward/yaml                       {:mvn/version "1.0.11"}
   markdown-to-hiccup/markdown-to-hiccup {:mvn/version "0.6.2"}
   metosin/reitit-frontend               {:mvn/version "0.7.1"}
-  org.clojure/clojure                   {:mvn/version "1.11.3"}
+  org.clojure/clojure                   {:mvn/version "1.11.4"}
   org.clojure/clojurescript             {:mvn/version "1.11.132"}
   org.flatland/ordered                  {:mvn/version "1.15.12"}
   reagent/reagent                       {:mvn/version "1.2.0"}
