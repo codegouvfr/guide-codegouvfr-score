@@ -8,7 +8,7 @@ Ce dépôt contient le code pour une application web présentant le guide
 *awesome* pour calculer le *awesome score* des logiciels libres du
 secteur public.
 
-L'application est là : [guide-awesome-score.code.gouv.fr](https://guide-awesome-score.code.gouv.fr).
+L'application est là : <https://code.gouv.fr/guides/awesome/>
 
 Ce dépôt de code source est dérivé de l'application
 <https://git.sr.ht/~bzg/choices>.
